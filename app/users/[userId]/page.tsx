@@ -4,7 +4,7 @@ import getAllUsers from "@/lib/getAllUsers";
 import getUserPosts from "@/lib/getUserPosts";
 import UserPosts from "./components/page";
 import type { Metadata } from "next";
-import NotFound from "./components/not-found";
+import { notFound } from "next/navigation";
 
 type Params = {
   params: { userId: string };
@@ -35,7 +35,10 @@ export default async function UserPage({ params: { userId } }: Params) {
   // fetch data in parallel to minimize waterfalls and reduce loading times
   const [user, userPosts] = await Promise.all([userData, userPostsData]);
 
-  if (!user) return <NotFound />;
+  if (!user) {
+    notFound();
+  }
+
   // user loading UI, streaming, and suspense to progressively render a page and show a result to the user while the rest of the content loads --> see the "UserPosts"
   return (
     <>
