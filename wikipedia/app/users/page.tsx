@@ -12,7 +12,7 @@ export default async function UsersPage() {
   const users = await usersData;
 
   return (
-    <>
+    <main className="text-white">
       <h2>
         <Link href="/">Back to Home</Link>
       </h2>
@@ -26,6 +26,6 @@ export default async function UsersPage() {
           </>
         );
       })}
-    </>
+    </main>
   );
 }

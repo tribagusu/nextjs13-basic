@@ -41,7 +41,7 @@ export default async function UserPage({ params: { userId } }: Params) {
 
   // user loading UI, streaming, and suspense to progressively render a page and show a result to the user while the rest of the content loads --> see the "UserPosts"
   return (
-    <>
+    <main className="text-white">
       <h2>{user?.name}</h2>
       <br />
 
@@ -49,7 +49,7 @@ export default async function UserPage({ params: { userId } }: Params) {
         {/* @ts-expect-error Server Component */}
         <UserPosts promisePosts={userPostsData} />
       </Suspense>
-    </>
+    </main>
   );
 }
 
